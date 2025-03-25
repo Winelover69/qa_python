@@ -39,12 +39,14 @@ class TestBooksCollector:
             ("Двенадцать стульев", "Комедии"),
         ])
     def test_set_book_genre_success(self, name, genre):
+        #Проверяет то жанр книги устанавливается успешно.
             collector = BooksCollector()
             collector.add_new_book(name)
             collector.set_book_genre(name, genre)
             assert collector.get_book_genre(name) == genre
 
     def test_add_new_book_long_name(self):
+        #Проверяет, что книга с названием длиннее 41 символов не добавляется в словарь.
         collector = BooksCollector()
         collector.add_new_book('Очень длинное название книги, которое превышает 41 символов')
         assert 'Очень длинное название книги, которое превышает 41 символов' not in collector.get_books_genre()
